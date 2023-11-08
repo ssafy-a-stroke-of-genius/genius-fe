@@ -22,14 +22,14 @@ const Router = () => {
   return (
     <BrowserRouter>
       <PaddingContainer>
-      <NewsItem 
+      {/* <NewsItem 
   title="수재우" 
   date="10/26"
   iconSrc={writerIconImg}
   newsImageSrc={newsItemImg}
   newsTitle="1984년, 대회 조공 별똥별 내렸..."
   newsSummary="1984년, 대한민국 조공 보았는 아니 먹다가 더 알림이 뿐만 요소이다. 이 고체는 도덕'더..."
-/>
+/> */}
       </PaddingContainer>
       <PaddingContainer>
         {/* <NewsCard title={"제목입니다"} date={"2023-08-23"}/> */}
