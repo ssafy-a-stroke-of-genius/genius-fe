@@ -1,22 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import useWindowDimension from "../useWindowDimension";
+import useWindowDimension from "../../useWindowDimension";
 
+// 스타일 상수 정의
+const MobileWidth = "300px";
+const DesktopWidth = "412px";
+const ContainerHeightMobile = "120px";
+const ContainerHeightDesktop = "160px";
+const IconSize = "1.875rem";
+
+// 스타일 컴포넌트 정의
 const NewsItemContainer = styled.div`
   display: flex;
-  width: 25.75rem;
-  height: 10rem;
-  padding: 0.5625rem 1.25rem 0.5625rem 1.25rem;
-  /* justify-content: flex-end; */
+  width: ${DesktopWidth};
+  height: ${ContainerHeightDesktop};
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #f0f0f0;
-  /* border: 1px solid black; */
 `;
 
 const NewsItemWrapper = styled.div`
   width: 21.3125rem;
   height: 8.875rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const NewsItemHeader = styled.div`
@@ -32,8 +40,8 @@ const WriterContainer = styled.div`
 `;
 
 const WriterIcon = styled.img`
-  width: 1.875rem;
-  height: 1.875rem;
+  width: ${IconSize};
+  height: ${IconSize};
 `;
 
 const WriterName = styled.p`
@@ -41,18 +49,16 @@ const WriterName = styled.p`
   color: #222;
   font-family: Pretendard;
   font-size: 0.875rem;
-  font-style: normal;
   font-weight: 700;
-  line-height: 2.8125rem; /* 321.429% */
+  line-height: 1.25rem;
 `;
 
 const NewsDate = styled.p`
   color: #222;
   font-family: Pretendard Variable;
   font-size: 0.75rem;
-  font-style: normal;
   font-weight: 500;
-  line-height: 2.8125rem; /* 375% */
+  line-height: 1.25rem;
 `;
 
 const NewsItemContents = styled.div`
@@ -66,7 +72,6 @@ const NewsImg = styled.img`
 `;
 
 const NewsItemSummary = styled.div`
-  /* margin-top: 10px; */
   padding-left: 10px;
 `;
 
@@ -74,21 +79,19 @@ const NewsTitle = styled.h3`
   color: #222;
   font-family: Pretendard Variable;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: 1.25rem;
 `;
 
 const NewsSummary = styled.p`
   color: #000;
   font-family: Pretendard Variable;
   font-size: 0.75rem;
-  font-style: normal;
   font-weight: 300;
-  line-height: 1.25rem; /* 166.667% */
+  line-height: 1rem;
 `;
 
-const NewsItem = ({
+const NewsListItem = ({
   title,
   date,
   iconSrc,
@@ -98,10 +101,10 @@ const NewsItem = ({
 }) => {
   const { width } = useWindowDimension();
 
+  // 미디어 쿼리에 따른 스타일 조정
   const adjustedStyle = {
-    ...(width < 600
-      ? { height: "120px", width: "300px" }
-      : { height: "160px", width: "412px" }),
+    height: width < 600 ? ContainerHeightMobile : ContainerHeightDesktop,
+    width: width < 600 ? MobileWidth : DesktopWidth,
   };
 
   return (
@@ -128,4 +131,4 @@ const NewsItem = ({
   );
 };
 
-export default NewsItem;
+export default NewsListItem;
