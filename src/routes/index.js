@@ -3,15 +3,17 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import Graph from "../components/Graph.jsx";
 import styled from "styled-components";
-import NewsItem from "../components/item/NewsListItem";
-import NewsCard from "../components/NewsCard"
-import NewsDetail from "../components/NewsDetail";
-import NewsList from "../components/NewsList";
-import NavigationBar from "../components/layout/NavigationBar";
+// import NewsItem from "../components/item/NewsListItem";
+// import NewsCard from "../components/NewsCard"
+// import NewsDetail from "../components/NewsDetail";
+// import NewsList from "../components/NewsList";
+// import NavigationBar from "../components/layout/NavigationBar";
 
 const PaddingContainer = styled.div`
   /* padding: 10px; // 원하는 패딩 값 설정 */
   display: flex;
+  width: 100%;
+  height: 100vh;
   /* flex-direction: column; */
 `;
 
@@ -30,13 +32,13 @@ const Router = () => {
 
   
 
-
-      <PaddingContainer>
       <Graph/>
-      <NavigationBar/>
+
+      {/* <PaddingContainer> */}
+      {/* <NavigationBar/> */}
       {/* <NewsList/> */}
       {/* <NewsDetail iconSrc={writerIconImg} date="10/26" newsTitle={newsTitle} imgSrc={newsItemImg} text={newsText} writerName="수재우 기자"/> */}
-      </PaddingContainer>
+      {/* </PaddingContainer> */}
       {/* <PaddingContainer> */}
         {/* <NewsCard title={"제목입니다"} date={"2023-08-23"}/> */}
 

@@ -59,7 +59,6 @@ function LineChart() {
   // 차트 설정
   const options = {
     chart: {
-      height: 300,
       type: "line",
       zoom: {
         enabled: false,
@@ -84,7 +83,8 @@ function LineChart() {
         options={options}
         series={series}
         type="line"
-        height={300}
+        height={400}
+        width={550}
       />
     </div>
   );
