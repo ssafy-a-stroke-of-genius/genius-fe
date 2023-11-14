@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
+import {
+  format,
+  getYear,
+  getMonth,
+  getDate,
+  getHours,
+  getMinutes,
+  isEqual,
+  parseISO,
+} from "date-fns";
 
 function LineChart() {
+  const date = new Date().toISOString();
+  console.log("date ", parseISO(date));
+
   // 데이터셋
   const [series, setSeries] = useState([
     {
@@ -16,16 +29,19 @@ function LineChart() {
     },
   ]);
 
-  const [doFetch, setDofFetch] = useState(false);
-  const finishDate = "No 17, 1995 03:24:00";
+  const [doFetch, setDoFetch] = useState(false);
+  const finishDate = parseISO("2023-11-14T10:40:00+0000");
+  console.log("fd : ", finishDate);
+
+  console.log(isEqual(finishDate, parseISO(date)));
+  // console.log("fdate ", format(finishDate, "M/dd/R hh:mm OOOO"));
 
   useEffect(() => {
     const getTime = () => {
-      let date = new Date();
-
-      if (date.getTime == "") {
-        setDofFetch(true);
-      }
+      // let date = new Date();
+      // if (date.getTime == "") {
+      //   setDofFetch(true);
+      // }
     };
 
     const timer = setInterval(getTime, 1000 * 60 * 60);
@@ -37,7 +53,7 @@ function LineChart() {
   useEffect(() => {
     if (doFetch) {
       // 백과 통신  - fetch 보내기
-      setDofFetch(false);
+      setDoFetch(false);
     }
   }, [doFetch]);
 
