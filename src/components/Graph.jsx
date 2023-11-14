@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
+import {
+  format,
+  getYear,
+  getMonth,
+  getDate,
+  getHours,
+  getMinutes,
+  isEqual,
+  parseISO,
+} from "date-fns";
 
 function LineChart() {
+  const date = new Date().toISOString();
+  console.log("date ", parseISO(date));
+
   // 데이터셋
-  const series = [
+  const [series, setSeries] = useState([
     {
       data: [
         { x: "2023-05-12", y: 30 },
@@ -14,7 +27,48 @@ function LineChart() {
         { x: "2023-05-17", y: 50 },
       ],
     },
-  ];
+  ]);
+
+  const [doFetch, setDoFetch] = useState(false);
+  const finishDate = parseISO("2023-11-14T10:40:00+0000");
+  console.log("fd : ", finishDate);
+
+  console.log(isEqual(finishDate, parseISO(date)));
+  // console.log("fdate ", format(finishDate, "M/dd/R hh:mm OOOO"));
+
+  useEffect(() => {
+    const getTime = () => {
+      // let date = new Date();
+      // if (date.getTime == "") {
+      //   setDofFetch(true);
+      // }
+    };
+
+    const timer = setInterval(getTime, 1000 * 60 * 60);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (doFetch) {
+      // 백과 통신  - fetch 보내기
+      setDoFetch(false);
+    }
+  }, [doFetch]);
+
+  // const series = [
+  //   {
+  //     data: [
+  //       { x: "2023-05-12", y: 30 },
+  //       { x: "2023-05-13", y: 20 },
+  //       { x: "2023-05-14", y: 40 },
+  //       { x: "2023-05-15", y: 50 },
+  //       { x: "2023-05-16", y: 40 },
+  //       { x: "2023-05-17", y: 50 },
+  //     ],
+  //   },
+  // ];
 
   const fill = {
     type: "gradient",
@@ -59,7 +113,6 @@ function LineChart() {
   // 차트 설정
   const options = {
     chart: {
-      height: 300,
       type: "line",
       zoom: {
         enabled: false,
@@ -84,7 +137,8 @@ function LineChart() {
         options={options}
         series={series}
         type="line"
-        height={300}
+        height={400}
+        width={550}
       />
     </div>
   );
