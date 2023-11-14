@@ -1,11 +1,13 @@
 import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Graph from "../components/Graph.jsx";
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Graph/>
       <Routes>
-        <Route path="/" element={<h1>HelloWorld!</h1>} />
+        <Route path="/" />
       </Routes>
     </BrowserRouter>
   );
